@@ -1,11 +1,13 @@
 # shadowsocks-net-speeder
 
-FROM ubuntu:14.04.3
+FROM ubuntu:14.04
 MAINTAINER tfhavingfun <tftylerfoo@gmail.com>
-RUN apt-get update && \
-    add-apt-repository ppa:chris-lea/libsodium &&\
-    apt-get update && \
-    apt-get install -y python-pip libsodium-dev libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git
+RUN apt-get update && apt-get install -y \
+    python-software-properties \
+    software-properties-common \
+ && add-apt-repository ppa:chris-lea/libsodium \
+ && apt-get update \
+ && apt-get install -y python-pip libsodium-dev libnet1 libnet1-dev libpcap0.8 libpcap0.8-dev git
 
 RUN pip install git+https://github.com/shadowsocks/shadowsocks.git@2.9.0#egg=shadowsocks
 
